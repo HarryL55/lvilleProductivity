@@ -1,0 +1,325 @@
+<html>
+    <head onload="">
+        <style>
+            #title{
+                font-size:36px;
+                text-align:center;
+                padding-top:15px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+            #buttons{
+                text-align:center;
+            }
+            #button{
+                font-size:24px;
+                padding:5px;
+                padding-right:10px;
+                background-color:goldenrod;
+                color:black;
+            }
+            #tableResults{
+                position: absolute;
+                padding-left:525;
+                padding-top:20px;
+
+            }
+            table{
+                border-bottom: 2px solid black;
+                border-spacing: 0px;
+                color: black;
+                align-content: center;
+                text-align:center;
+            }
+            th{
+               border-top: 2px solid black;
+               border-left: 2px solid black;
+               border-right: 2px solid black;
+               padding-left: 8px;
+               padding-right: 8px;
+            }
+            td{
+                border-left: 2px solid black;
+                border-top:2px solid black; 
+                border-right:2px solid black;
+                color:black;
+            }
+            #whitespace{
+                color:white;
+            }
+            #veracLink{
+                position:absolute;
+                font-size:36px;
+                color:goldenrod;
+                left:660px;
+                background-color: grey;
+            }
+            #tableSchedule{
+                position:absolute;
+                padding-left: 38%;
+                padding-top:12%;
+
+            }
+            .schedHeader{
+                padding-left:35px;
+                padding-right:35px;
+            }
+
+            #toDoButton{
+                font-size:24px;
+                padding:5px;
+                padding-right:10px;
+                background-color:goldenrod;
+                color:black;
+                position:absolute;
+                padding-top:100px;
+            }
+            #toDoList{
+                position:absolute;
+                padding-top: 30px;
+                padding-left: 10px;
+            }
+            </style>
+        <title>Homework Redirect Site</title>
+    </head>
+    <body onload="makeTableRows()">
+        <p id=title>Select Day of Week:</p>
+        <a href="https://portals.veracross.com/lville/student" id=veracLink target=_blank>Veracross</a>
+        <br><br><br>
+        <div id=buttons>
+            <button onClick="toDoList()" id=button>To-Do List</button>
+            <button onClick="giveSites('monday')" id=button>Monday</button>
+            <button onClick="giveSites('tuesday')" id=button>Tuesday</button>
+            <button onClick="giveSites('wednesday')" id=button>Wednesday</button>
+            <button onClick="giveSites('thursday')" id=button>Thursday</button>
+            <button onClick="giveSites('friday')" id=button>Friday</button>
+            <button onClick="giveSites('saturday')" id=button>Saturday</button>
+        </div>
+        <div id=toDoList></div>
+        <div id=tableResults>
+                <table>
+                    <tr id=header>
+                        <th><span id=whitespace>____</span>Class:<span id=whitespace>____</span></th>
+                        <th><span id=whitespace>_________</span>Syllabus Link:<span id=whitespace>_________</span></th>
+                    </tr>
+                    <tr id=firstRow>
+                        <td id=class1>Class 1</td>
+                        <td><a href="" target="_blank" id=link1>Class 1</a></td>
+                    </tr>
+                    <tr id=secondRow>
+                        <td id=class2>Class 2</td>
+                        <td><a href="" target="_blank" id=link2>Class 2</a></td>
+                    </tr>
+                    <tr id=thirdRow>
+                            <td id=class3>Class 3</td>
+                            <td><a href="" target="_blank" id=link3>Class 3</a></td>
+                    </tr>
+                    <tr id=4thRow>
+                            <td id=class4>Class 4</td>
+                            <td><a href="" target="_blank" id=link4>Class 4</a></td>
+                    </tr>
+                    <tr id=fifthRow>
+                            <td id=class5>Class 5</td>
+                            <td><a href="" target="_blank" id=link5>Class 5</a></td>
+                    </tr>
+                    <tr id=6thRow>
+                            <td id=class6>Class 6</td>
+                            <td><a href="" target="_blank"  id=link6>Class 6</a></td>
+                    </tr>
+                </table>    
+        </div>
+        <br>
+        <div id=tableSchedule></div>
+            <script>
+                const toDoList = (toDoRows, className) => {
+                    let toDoTable = document.createElement("table");
+                    let toDoHeader = new Array()
+                    toDoHeader = [" ", "Class:", "Homework:"];
+                    let tr = toDoTable.insertRow(0);
+                    for(let y = 0; y < toDoHeader.length; y++){
+                        console.log("im working");
+                        let th = document.createElement("th");
+                        th.innerHTML = toDoHeader[y];
+                        th.setAttribute("class", "schedHeader");
+                        tr.appendChild(th);
+                    }
+
+                    for(let s = 1; s < toDoRows+1; s++){
+                        let tdTr = toDoTable.insertRow(j);
+                        let tdCheck = document.createElement("td");
+                        let checkMark = document.createElement("input");
+                        checkMark.setAttribute("type", "checkbox");
+                        checkMark.setAttribute("id", "checkAttr");
+                        let tdName = document.createElement("td");
+                        tdName.innerHTML = `${className[s-1]}`;
+                        let tdTB = document.createElement("td");
+                        let textBox = document.createElement("input");
+                        textBox.setAttribute("type", "text");
+                        textBox.setAttribute("id, textAttr");
+                        tdCheck.appendChild(checkMark);
+                        tdTB.appendChild(textBox);
+                        tdTr.appendChild(tdTB);
+                        tdTr.appendChild(tdCheck);
+                        tdTr.appendChild(tdName);
+                    }
+                    let toDoDiv = document.getElementById("toDoList");
+                    toDoDiv.appendChild(toDoTable);
+                }
+
+                const makeTableRows = (numOfRows, period, activity, timeSlot) =>{
+                    let headerArray = new Array();
+                    headerArray = ["Time", "Activity", "Period"]
+                    let scheduleTable = document.createElement("table");
+                    scheduleTable.setAttribute("id","schedule");
+
+                    let tr = scheduleTable.insertRow(0);
+                    for(let h = 0; h < headerArray.length; h++){
+                        let th = document.createElement("th");
+                        th.innerHTML = headerArray[h];
+                        th.setAttribute("class", "schedHeader");
+                        tr.appendChild(th);
+                    }
+
+                    for(let j = 1; j < numOfRows+1; j++){
+                        let tr2 = scheduleTable.insertRow(j);
+                        let tdPer = document.createElement("th");
+                        let tdAct = document.createElement("th");
+                        let tdTime = document.createElement("th");  
+                        tdPer.innerHTML = `${period[j-1]}`;
+                        tdAct.innerHTML = `${activity[j-1]}`;
+                        tdTime.innerHTML = `${timeSlot[j-1]}`;    
+                        tr2.appendChild(tdPer);
+                        tr2.appendChild(tdAct);
+                        tr2.appendChild(tdTime);
+                    }
+
+                    let div = document.getElementById("tableSchedule");
+                    div.appendChild(scheduleTable);
+                }   
+                let clearSchedule = () =>{
+                        let deleteSched = document.getElementById("schedule");
+                        deleteSched.parentNode.removeChild(deleteSched);
+                }
+                let classReset = () =>{
+                    for (let i = 1; i < 7; i++) {
+                        document.getElementById(`class${i}`).innerHTML = "None";
+                        document.getElementById(`link${i}`).innerHTML = "None";
+                    }
+                }
+
+                const classAssign = (posNumber, className) => {
+                    let usedLink;
+                    document.getElementById(`class${posNumber}`).innerHTML = `${className}`;
+                    document.getElementById(`link${posNumber}`).innerHTML = `${className} Syllabus`;
+                    switch(className){
+                        case "IBES":
+                            usedLink="https://haiku.lawrenceville.org/dconcepcion/ibeswithconcepcionwinter2019-2020/cms_page/view/49408666";
+                        break;
+                        
+                        case "Math":
+                            usedLink="https://docs.google.com/spreadsheets/d/1-TEd06Go0qiOkwj8Ru3_kSFO1IAJdSF-QlDbhEcfHxM/edit#gid=1064114720";
+                        break;
+
+                        case "Cultural Studies":
+                            usedLink="https://docs.google.com/document/d/1Lodbnj3yRFb8Ngraq4T54jUH8NxccwoR57g_rbidcsE/edit";
+                        break;
+
+                        case "Art":
+                            usedLink="https://haiku.lawrenceville.org/ckalna/foundations2019-20/cms_page/view/49406829";
+                        break;
+
+                        case "English":
+                            usedLink="https://haiku.lawrenceville.org/kchaput/english59/cms_page/view";
+                        break;
+
+                        case "Spanish":
+                            usedLink="https://haiku.lawrenceville.org/jgonzalez/language69/cms_page/view";
+                        break;
+                        case "Nothing":
+                            usedLink=""
+                    }
+                    document.getElementById(`link${posNumber}`).href = `${usedLink}`;
+
+                }
+                const giveSites = (dayOfWeek) => {
+                    let periods = new Array();
+                    let activity = new Array();
+                    let timeSlot = new Array();
+                    let changePadding = document.getElementById("schedule");
+                    changePadding.style.paddingLeft = '580px';
+                    switch(dayOfWeek){
+                        case "monday":
+                            clearSchedule();
+                            periods = ["A", "B", "Consult", "C", "D", "Adv. Lunch", "Form Mtg", "E", "F", "Lifetime"];
+                            activity = ["IBES", "Math", "Consultation", "Cultural Studies", "Art", "Advising Lunch", "Form Meeting", "English", "Spanish", "Lifetime Fitness"];
+                            timeSlot = ["8:00 - 8:45", "8:55 - 9:35", "9:45 - 10:20", "10:30 - 11:15", "11:25 - 12:05", "12:15 - 12:45", "12:55 - 1:30", "1:40 - 2:25", "2:35 - 3:20", "3:45 - 4:45"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "Math");
+                            classAssign(3, "Cultural Studies");
+                            classAssign(4, "Art");
+                            classAssign(5, "English");
+                            classAssign(6, "Spanish");                            
+                            break;
+                        case "tuesday":
+                            clearSchedule();
+                            periods = ["A", "Consult", "D", "Lunch", "E", "C",];
+                            activity = ["IBES", "Consultation", "Art", "Lunch", "English", "Cultural Studies"];
+                            timeSlot = ["8:15 - 9:50", "10:00 - 10:35", "10:45 - 12:25", "12:25 - 12:55", "1:05 - 2:00", "2:10 - 3:05"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "Art");
+                            classAssign(3, "English");
+                            classAssign(4, "Cultural Studies");
+                            break;
+                        case "wednesday":
+                        clearSchedule();
+                            periods = ["Consult", "B", "F", "C", "Lunch", "Lifetime"];
+                            activity = ["Consultation", "Math", "Spanish", "Cultural Studies", "Lunch", "Lifetime Fitness"];
+                            timeSlot = ["8:55 - 9:20", "9:20 - 10:25", "10:35 - 11:30", "11:40 - 12:35", "12:40 - 1:20", "1:30 - 2:30"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "Math");
+                            classAssign(2, "Spanish");
+                            classAssign(3, "Cultural Studies");
+                            break;
+                        case "thursday":
+                        clearSchedule();
+                            periods = ["B", "Smeeting", "E", "Lunch", "A", "F"];
+                            activity = ["Math", "School Meeting", "English", "Lunch", "IBES", "Spanish"];
+                            timeSlot = ["9:00 - 9:55", "10:00 - 10:35", "10:45 - 11:40", "11:50 - 12:55", "1:05 - 2:00", "2:10 - 3:05"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "Math");
+                            classAssign(2, "English");
+                            classAssign(3, "IBES");
+                            classAssign(4, "Spanish");
+                            break;
+                        case "friday":
+                        clearSchedule();
+                            periods = ["C", "Consult", "F", "Lunch", "D", "B", "Lifetime"];
+                            activity = ["Cultural Studies", "Consultation", "Spanish", "Lunch", "Art", "Math", "Lifetime Fitness"];
+                            timeSlot = ["9:00 - 9:55", "10:00 - 10:35", "10:45 - 11:40", "12:00 - 12:55", "1:05 - 2:00", "2:10 - 3:05", "3:30 - 4:30" ];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "Cultural Studies");
+                            classAssign(2, "Spanish");
+                            classAssign(3, "Art");
+                            classAssign(4, "Math");
+                            break;
+                        case "saturday":
+                        clearSchedule();
+                            periods = ["A", "FREE", "E"];
+                            activity = ["IBES", "FREE PERIOD", "English"];
+                            timeSlot = ["8:30 - 9:25", "9:30 - 10:25", "10:40 - 11:35"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "English");
+                            break;
+                    }
+                };
+        </script>
+    </body>
+</html>
