@@ -1,0 +1,454 @@
+edxew<html>
+    <head onload="toDoListButton('test')">
+        <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
+        <style>
+            body{
+                background-image:url("https://upload.wikimedia.org/wikipedia/en/c/cd/Lawrenceville_School_seal.png");
+                background-repeat: no-repeat;
+                background-position-x: center;
+                background-position-y: 30%;
+                background-size:contain;
+                background-color:black;
+                font-family: 'Alegreya SC';font-size: 22px;
+            }
+            #title{
+                font-family: 'Alegreya SC';font-size: 22px;
+                color:rgb(234,199,151);
+                background-color:black;
+                font-weight:bolder;
+                font-size:46px;
+                text-align:center;
+                padding-top:15px;
+            }
+            #buttons{
+                text-align:center;
+            }
+            #button{
+                font-size:24px;
+                padding:5px;
+                padding-right:10px;
+                background-color:rgb(204,63,71);
+                color:white;
+                font-weight:bolder;
+            }
+            .whitespace{
+                color:darkgrey;
+            }
+            #tableResults{
+                
+                padding-left:525;
+                padding-top:20px;
+
+            }
+            table{
+                border-bottom: 2px solid white;
+                border-spacing: 0px;
+                color: black;
+                align-content: center;
+                text-align:center;
+                font-size:18px;
+            }
+            #header{
+                padding-left:55px;
+                padding-right:55px;
+            }
+            .odd{
+                background-color:black;
+                color:white;
+                border-color:white;
+            }
+            .even{
+                background-color:rgb(204,63,71);
+                border-color:white;
+            }
+            tr{
+                background-color:rgb(204,63,71);
+            }
+            th{
+               border-top: 2px solid white;
+               border-left: 2px solid white;
+               border-right: 2px solid white;
+               padding-left: 8px;
+               padding-right: 8px;
+               background-color:rgb(204,63,71);
+            }
+            td{
+                border-left: 2px solid black;
+                border-top:2px solid black; 
+                border-right:2px solid black;
+                color:white;
+                background-color:white;
+            }
+            #whitespace{
+                color:white;
+            }
+            #veracLink{
+                position:absolute;
+                font-size:32px;
+                color:black;
+                left:660px;
+                background-color:rgb(204,63,71);
+            }
+            #diningLink{
+                position:absolute;
+                font-size:32px;
+                color:black;
+                left:680px;
+                background-color:rgb(204,63,71);
+            }
+            #tableSchedule{
+                padding-left: 37.25%;
+                padding-top:1%;
+
+            }
+            .schedHeader{
+                padding-left:35px;
+                padding-right:35px;
+            }
+
+            #toDoButton{
+                font-size:24px;
+                padding:5px;
+                padding-right:10px;
+                background-color:goldenrod;
+                color:black;
+                position:absolute;
+                padding-top:100px;
+            }
+            #toDoList{
+                position:absolute;
+                padding-top: 150px;
+                padding-left: 75px;
+            }
+            #textAttr{
+                width: 100%;
+                height: 100%;
+                font-size:12px;
+            }
+            a{
+                color:white;
+            }
+            </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lawrenceville Productivity Site</title>
+    </head>
+    <body onload="makeTableRows()">
+        <p id=title>Lawrenceville Productivity:</p>
+        <a href="https://portals.veracross.com/lville/student" id=veracLink target=_blank>Veracross</a>
+        <br><br>
+        <a href="https://www.lawrenceville.org/campus-life/dining" id=diningLink target=_blank class=diningLink>Dining</a>
+        <br><br><br>
+        <div id=buttons>
+            <button onClick="" class=toDoButton id=button>To-Do List</button>
+            <button onClick="giveSites('monday')" id=button>Monday</button>
+            <button onClick="giveSites('tuesday')" id=button>Tuesday</button>
+            <button onClick="giveSites('wednesday')" id=button>Wednesday</button>
+            <button onClick="giveSites('thursday')" id=button>Thursday</button>
+            <button onClick="giveSites('friday')" id=button>Friday</button>
+            <button onClick="giveSites('saturday')" id=button>Saturday</button>
+        </div>
+        <div id=toDoList></div>
+        <div id=tableResults>
+                <table>
+                    <tr id=header>
+                        <th id=header>Class:</th>
+                        <th id=header>Syllabus Link:</th>
+                    </tr>
+                    <tr id=firstRow>
+                        <td id=class1 class="odd">Class 1</td>
+                        <td class="odd"><a href="" target="_blank" id=link1>Class 1</a></td>
+                    </tr>
+                    <tr id=secondRow>
+                        <td id=class2 class="even">Class 2</td>
+                        <td class="even"><a href="" target="_blank" id=link2>Class 2</a></td>
+                    </tr>
+                    <tr id=thirdRow>
+                            <td id=class3 class=odd>Class 3</td>
+                            <td class=odd><a href="" target="_blank" id=link3>Class 3</a></td>
+                    </tr>
+                    <tr id=4thRow>
+                            <td id=class4 class=even>Class 4</td>
+                            <td class=even><a href="" target="_blank" id=link4>Class 4</a></td>
+                    </tr>
+                    <tr id=fifthRow>
+                            <td class=odd id=class5>Class 5</td>
+                            <td class=odd><a href="" target="_blank" id=link5>Class 5</a></td>
+                    </tr>
+                    <tr id=6thRow>
+                            <td class=even id=class6>Class 6</td>
+                            <td class=even><a href="" target="_blank"  id=link6>Class 6</a></td>
+                    </tr>
+                </table>    
+        </div>
+        <p id="toDoListTableThing" class="whitespace"></p>
+        <br>
+        <div id=tableSchedule></div>
+            <script onload="toDoList('test')">
+                const toDoListButton = (classArr) =>{
+                    let toDoArray = [];
+                    console.log(classArr.length);
+                    for(let u = 0; u < classArr.length; u++){
+                        toDoArray.push(classArr[u]);
+                    }
+                    console.log(toDoArray);
+                    let button = document.querySelector(".toDoButton");
+                    button.setAttribute("onClick", `toDoList("${toDoArray}")`);
+                }
+                const toDoList = (className) => {
+                    let deleteToDo = document.getElementById("toDoListTableThing");
+                    deleteToDo.parentNode.removeChild(deleteToDo);
+                    console.log(className);
+                    let myArr = [];
+                    let avoidArr = ["Consultation", "Lifetime Fitness", "Lunch", "Advising Lunch", "Form Meeting", "School Meeting", "FREE PERIOD"];
+                    let acc = "";
+                    for(let p = 0; p < className.length; p++){
+                        if (className[p] === ",") {
+                            myArr.push(acc)
+                            acc = ""
+                        } else {
+                            acc += className[p];
+                        }
+                    }
+                    if (acc !== "") { myArr.push(acc) }
+                    console.log(acc);
+                    console.log(myArr);
+                    //console.log(Array.isArray(className));
+                    let toDoTable = document.createElement("table");
+                    toDoTable.setAttribute("id", "toDoListTableThing");
+                    if(toDoTable.children.length > 0){
+
+                    }
+                    else{
+                        let toDoHeader = new Array()
+                    toDoHeader = [" ", "Class:", "Homework:"];
+                    let tr = toDoTable.insertRow();
+                    for(let y = 0; y < toDoHeader.length; y++){
+                        //console.log("im working");
+                        let th = document.createElement("th");
+                        th.innerHTML = toDoHeader[y];
+                        th.setAttribute("class", "schedHeader");
+                        tr.appendChild(th);
+                }
+                    let count = 1;
+                    console.log(className.length);
+                    for(let s = 0; s < myArr.length; s++){
+                            console.log(count);
+                            if(avoidArr.includes(myArr[s])){
+                                count++;
+                            }
+                            else{
+                                let tdTr = toDoTable.insertRow();
+                                let tdCheck = document.createElement("td");
+                                let checkMark = document.createElement("input");
+                                tdTr.setAttribute("id","tableRow");
+                                checkMark.setAttribute("type", "checkbox");
+                                checkMark.setAttribute("id", "checkAttr");
+                                let tdName = document.createElement("td");
+                                //console.log(acc);
+                                tdName.innerHTML = `${myArr[s]}`;
+                                let tdTB = document.createElement("td");
+                                let textBox = document.createElement("textarea");
+                                textBox.setAttribute("id", "textAttr");
+                                tdCheck.appendChild(checkMark);
+                                tdTB.appendChild(textBox);
+                                tdTr.appendChild(tdCheck);
+                                tdTr.appendChild(tdName);
+                                tdTr.appendChild(tdTB);
+                                if(tdTr.rowIndex % 2 == 0){
+                                    tdCheck.setAttribute("class", "even");
+                                    tdTB.setAttribute("class", "even");
+                                    tdName.setAttribute("class", "even");
+                                    console.log("even");
+                                }
+                                else{
+                                    tdCheck.setAttribute("class", "odd");
+                                    tdTB.setAttribute("class", "odd");
+                                    tdName.setAttribute("class", "odd");
+                                }
+                                count++;
+                            }
+                    }
+                        let toDoDiv = document.getElementById("toDoList");
+                        toDoDiv.appendChild(toDoTable);
+                        console.log(toDoTable.children.length);
+                    }
+                }
+
+                const makeTableRows = (numOfRows, period, activity, timeSlot) =>{
+                    console.log("im trippim");
+                    let headerArray = new Array();
+                    headerArray = ["Time", "Activity", "Period"]
+                    let scheduleTable = document.createElement("table");
+                    scheduleTable.setAttribute("id","schedule");
+
+                    let tr = scheduleTable.insertRow();
+                    for(let h = 0; h < headerArray.length; h++){
+                        let th = document.createElement("th");
+                        th.innerHTML = headerArray[h];
+                        th.setAttribute("class", "schedHeader");
+                        tr.appendChild(th);
+                    }
+
+                    for(let j = 1; j < numOfRows+1; j++){
+                        let tr2 = scheduleTable.insertRow();
+                        let tdPer = document.createElement("td");
+                        let tdAct = document.createElement("td");
+                        let tdTime = document.createElement("td");  
+                        tdPer.innerHTML = `${period[j-1]}`;
+                        tdAct.innerHTML = `${activity[j-1]}`;
+                        tdTime.innerHTML = `${timeSlot[j-1]}`;    
+                        tr2.appendChild(tdPer);
+                        tr2.appendChild(tdAct);
+                        tr2.appendChild(tdTime);
+                        console.log(tr2.rowIndex);
+                        if(tr2.rowIndex % 2 == 0){
+                            tdPer.setAttribute("class", "even");
+                            tdAct.setAttribute("class", "even");
+                            tdTime.setAttribute("class", "even");
+                        }
+                        else{
+                            tdPer.setAttribute("class", "odd");
+                            tdAct.setAttribute("class", "odd");
+                            tdTime.setAttribute("class", "odd");
+                        }
+                        console.log(tdPer.className);
+                    }
+
+                    let div = document.getElementById("tableSchedule");
+                    div.appendChild(scheduleTable);
+                }   
+                let clearSchedule = () =>{
+                        let deleteSched = document.getElementById("schedule");
+                        deleteSched.parentNode.removeChild(deleteSched);
+                }
+                let classReset = () =>{
+                    for (let i = 1; i < 7; i++) {
+                        document.getElementById(`class${i}`).innerHTML = "None";
+                        document.getElementById(`link${i}`).innerHTML = "None";
+                    }
+                }
+
+                const classAssign = (posNumber, className) => {
+                    let usedLink;
+                    Array.isArray(className);
+                    document.getElementById(`class${posNumber}`).innerHTML = `${className}`;
+                    document.getElementById(`link${posNumber}`).innerHTML = `${className} Syllabus`;
+                    switch(className){
+                        case "IBES":
+                            usedLink="https://haiku.lawrenceville.org/dconcepcion/ibeswithconcepcionwinter2019-2020/cms_page/view/49408666";
+                        break;
+                        
+                        case "Math":
+                            usedLink="https://docs.google.com/spreadsheets/d/1-TEd06Go0qiOkwj8Ru3_kSFO1IAJdSF-QlDbhEcfHxM/edit#gid=1064114720";
+                        break;
+
+                        case "Cultural Studies":
+                            usedLink="https://docs.google.com/document/d/1Lodbnj3yRFb8Ngraq4T54jUH8NxccwoR57g_rbidcsE/edit";
+                        break;
+
+                        case "Art":
+                            usedLink="https://haiku.lawrenceville.org/ckalna/foundations2019-20/cms_page/view/49406829";
+                        break;
+
+                        case "English":
+                            usedLink="https://haiku.lawrenceville.org/kchaput/english59/cms_page/view";
+                        break;
+
+                        case "Spanish":
+                            usedLink="https://haiku.lawrenceville.org/jgonzalez/language69/cms_page/view";
+                        break;
+                        case "Nothing":
+                            usedLink=""
+                    }
+                    document.getElementById(`link${posNumber}`).href = `${usedLink}`;
+
+                }
+                const giveSites = (dayOfWeek) => {
+                    let periods = new Array();
+                    let activity = [];
+                    let timeSlot = new Array();
+                    let changePadding = document.getElementById("schedule");
+                    changePadding.style.paddingLeft = '580px';
+                    switch(dayOfWeek){
+                        case "monday":
+                            clearSchedule();
+                            periods = ["A", "B", "Consult", "C", "D", "Adv. Lunch", "Form Mtg", "E", "F", "Lifetime"];
+                            activity = ["IBES", "Math", "Consultation", "Cultural Studies", "Art", "Advising Lunch", "Form Meeting", "English", "Spanish", "Lifetime Fitness"];
+                            timeSlot = ["8:00 - 8:45", "8:55 - 9:35", "9:45 - 10:20", "10:30 - 11:15", "11:25 - 12:05", "12:15 - 12:45", "12:55 - 1:30", "1:40 - 2:25", "2:35 - 3:20", "3:45 - 4:45"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "Math");
+                            classAssign(3, "Cultural Studies");
+                            classAssign(4, "Art");
+                            classAssign(5, "English");
+                            classAssign(6, "Spanish");                            
+                            break;
+                        case "tuesday":
+                            clearSchedule();
+                            periods = ["A", "Consult", "D", "Lunch", "E", "C",];
+                            activity = ["IBES", "Consultation", "Art", "Lunch", "English", "Cultural Studies"];
+                            timeSlot = ["8:15 - 9:50", "10:00 - 10:35", "10:45 - 12:25", "12:25 - 12:55", "1:05 - 2:00", "2:10 - 3:05"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "Art");
+                            classAssign(3, "English");
+                            classAssign(4, "Cultural Studies");
+                            break;
+                        case "wednesday":
+                        clearSchedule();
+                            periods = ["Consult", "B", "F", "C", "Lunch", "Lifetime"];
+                            activity = ["Consultation", "Math", "Spanish", "Cultural Studies", "Lunch", "Lifetime Fitness"];
+                            timeSlot = ["8:55 - 9:20", "9:20 - 10:25", "10:35 - 11:30", "11:40 - 12:35", "12:40 - 1:20", "1:30 - 2:30"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "Math");
+                            classAssign(2, "Spanish");
+                            classAssign(3, "Cultural Studies");
+                            break;
+                        case "thursday":
+                        clearSchedule();
+                            periods = ["B", "Smeeting", "E", "Lunch", "A", "F"];
+                            activity = ["Math", "School Meeting", "English", "Lunch", "IBES", "Spanish"];
+                            timeSlot = ["9:00 - 9:55", "10:00 - 10:35", "10:45 - 11:40", "11:50 - 12:55", "1:05 - 2:00", "2:10 - 3:05"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "Math");
+                            classAssign(2, "English");
+                            classAssign(3, "IBES");
+                            classAssign(4, "Spanish");
+                            break;
+                        case "friday":
+                        clearSchedule();
+                            periods = ["C", "Consult", "F", "Lunch", "D", "B", "Lifetime"];
+                            activity = ["Cultural Studies", "Consultation", "Spanish", "Lunch", "Art", "Math", "Lifetime Fitness"];
+                            timeSlot = ["9:00 - 9:55", "10:00 - 10:35", "10:45 - 11:40", "12:00 - 12:55", "1:05 - 2:00", "2:10 - 3:05", "3:30 - 4:30" ];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "Cultural Studies");
+                            classAssign(2, "Spanish");
+                            classAssign(3, "Art");
+                            classAssign(4, "Math");
+                            break;
+                        case "saturday":
+                        clearSchedule();
+                            periods = ["A", "FREE", "E"];
+                            activity = ["IBES", "FREE PERIOD", "English"];
+                            timeSlot = ["8:30 - 9:25", "9:30 - 10:25", "10:40 - 11:35"];
+                            makeTableRows(periods.length, periods, activity, timeSlot);
+                            toDoListButton(activity);
+                            classReset();
+                            classAssign(1, "IBES");
+                            classAssign(2, "English");
+                            break;
+                    }
+                };
+        </script onload="toDoListButton('test')">
+    </body>
+</html>
